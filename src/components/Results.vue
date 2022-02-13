@@ -1,16 +1,26 @@
 <template>
   <div class="result">
-    <div class="title">{{ results[resultIndex].title }}</div>
-    <div class="desc">{{ results[resultIndex].desc }}</div>
+    <div class="title">
+      {{ results[resultIndex].title }}
+    </div>
+    <div class="desc">
+      {{ results[resultIndex].desc }}
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: [
-    'results',
-    'totalCorrect',
-  ],
+  props: {
+    results: {
+      type: Array,
+      default: () => []
+    },
+    totalCorrect: {
+      type: Number,
+      default: 0
+    }
+  },
   computed: {
     resultIndex() {
       let index = 0
