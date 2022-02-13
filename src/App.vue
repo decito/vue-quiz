@@ -1,6 +1,9 @@
 <template>
   <div class="ctr">
-    <Questions v-if="questionsAnsweredCount < questions.length" />
+    <Questions
+      v-if="questionsAnsweredCount < questions.length"
+      :questions="questions"
+    />
     <Results v-else />
     <button type="button" class="reset-btn">Reset</button>
   </div>
