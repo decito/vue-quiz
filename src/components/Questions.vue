@@ -10,24 +10,26 @@
         {{ questionsAnswered }} out of {{ questions.length }} questions answered
       </div>
     </div>
-    <div
-      v-for="(question, qi) in questions"
-      :key="question.q"
-      v-show="questionsAnswered === qi"
-      class="single-question"
-    >
-      <div class="question">{{ question.q }}</div>
-      <div class="answers">
-        <div
-          v-for="answer in question.answers"
-          :key="answer.text"
-          class="answer"
-          @click.prevent="selectAnswer(answer.is_correct)"
-        >
-          {{ answer.text }}
+    <transition-group name="fade">
+      <div
+        v-for="(question, qi) in questions"
+        :key="question.q"
+        v-show="questionsAnswered === qi"
+        class="single-question"
+      >
+        <div class="question">{{ question.q }}</div>
+        <div class="answers">
+          <div
+            v-for="answer in question.answers"
+            :key="answer.text"
+            class="answer"
+            @click.prevent="selectAnswer(answer.is_correct)"
+          >
+            {{ answer.text }}
+          </div>
         </div>
       </div>
-    </div>
+    </transition-group>
   </div>
 </template>
 
