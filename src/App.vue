@@ -6,8 +6,8 @@
       :questionsAnswered="questionsAnsweredCount"
       @question-answered="questionAnswered"
     />
-    <Results v-else />
-    <button type="button" class="reset-btn">Reset</button>
+    <Results v-else :results="results" :totalCorrect="totalCorrect" />
+    <button v-if="this.questionsAnsweredCount === questions.length" type="button" class="reset-btn" @click.prevent="resetQuiz">Reset</button>
   </div>
 </template>
 
@@ -106,8 +106,11 @@ export default {
     questionAnswered(is_correct) {
       if(is_correct) this.totalCorrect++
       this.questionsAnsweredCount++
+    },
+    resetQuiz() {
+      this.questionsAnsweredCount = 0
+      this.totalCorrect = 0
     }
-
   }
 }
 </script>
